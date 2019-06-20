@@ -1,0 +1,30 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
+	id 'java'
+	//id "org.flywaydb.flyway" version "4.0.3"
+	id "org.flywaydb.flyway" version "5.2.4"
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.xdo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+	mavenCentral()
+}
+
+dependencies {
+	compile 'cn.easyproject:ojdbc6:11.2.0.4'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+flyway {
+	url = 'jdbc:oracle:thin:@//192.168.10.158:1521/XE'
+	user = 'dev'
+	password = 'dev'
+}
